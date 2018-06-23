@@ -3,7 +3,6 @@ image: openjdk:8-jdk
 stages:
   - build
   - test
-  - package
 
 
 ####################################################################################################
@@ -64,37 +63,3 @@ unit_test:
 
   script:
     - ./gradlew test
-
-
-####################################################################################################
-# PACKAGE APK FOR DOWNLOADING
-#
-
-.package_template: &package_template_def
-  before_script:
-    - export VERSION_NAME=`egrep '^[[:blank:]]+versionName[[:blank:]]'  app/build.gradle | awk '{print $2}' | sed s/\"//g`
-    - export VERSION_CODE=`egrep '^[[:blank:]]+versionCode[[:blank:]]'  app/build.gradle | awk '{print $2}'`
-    - mkdir -p deliverables
-
-    # Store some information about the build
-    - touch ./deliverables/info.txt
-    - echo "Build date          $(date)"                >> ./deliverables/info.txt
-    - echo "App version name    ${VERSION_NAME}"        >> ./deliverables/info.txt
-    - echo "App version code    ${VERSION_CODE}"        >> ./deliverables/info.txt
-    - echo "Git branch          ${CI_COMMIT_REF_NAME}"  >> ./deliverables/info.txt
-    - echo "Git commit          ${CI_COMMIT_SHA}"       >> ./deliverables/info.txt
-    - echo "Gitlab pipeline     ${CI_PIPELINE_ID}"      >> ./deliverables/info.txt
-
-
-package_release:
-  <<: *package_template_def
-  stage: package
-  environment: Release
-  only:
-    - master
-  script:
-    - mv app/build/outputs/apk/app-release.apk ./deliverables/NameOfTheApp-v$VERSION_NAME-$VERSION_CODE-release.apk
-  artifacts:
-    expire_in: 4 weeks
-    paths:
-    - deliverables
