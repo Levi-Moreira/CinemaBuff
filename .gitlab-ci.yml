@@ -40,8 +40,6 @@ stages:
 
 build_debug:
   <<: *build_template_def
-  only:
-    - develop
 
   script:
     - ./gradlew assembleDebug
