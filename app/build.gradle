@@ -4,9 +4,13 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.github.ben-manes.versions'
+
 apply from: '../configs/ktlint.gradle'
 
 apply from: '../configs/jacoco.gradle'
+
+
 android {
     compileSdkVersion Versions.compileSdk
     defaultConfig {
@@ -18,11 +22,40 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            debuggable true
+            testCoverageEnabled true
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets { main.java.srcDirs += 'src/main/kotlin' }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds true
+        htmlReport true
+        htmlOutput file("build/reports/lint-report.html")
+    }
+    testOptions {
+        animationsDisabled true
+        unitTests.all {
+            testLogging {
+                events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+            }
+        }
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+        }
+    }
+
+
+
 }
 
 dependencies {
@@ -34,4 +67,20 @@ dependencies {
     testImplementation Deps.junit
     androidTestImplementation Deps.runner
     androidTestImplementation Deps.espresso
+}
+
+dependencyUpdates {
+    checkForGradleUpdate = true
+    resolutionStrategy {
+        componentSelection { rules ->
+            rules.all { ComponentSelection selection ->
+                boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm'].any { qualifier ->
+                    selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+                }
+                if (rejected) {
+                    selection.reject('Release candidate')
+                }
+            }
+        }
+    }
 }
