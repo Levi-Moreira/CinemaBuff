@@ -4,31 +4,83 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.github.ben-manes.versions'
+
+apply from: '../configs/ktlint.gradle'
+
+apply from: '../configs/jacoco.gradle'
+
+
 android {
-    compileSdkVersion 28
+    compileSdkVersion Versions.compileSdk
     defaultConfig {
         applicationId "com.levimoreira.cinemabuff"
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Versions.versionCode
+        versionName Versions.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            debuggable true
+            testCoverageEnabled true
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets { main.java.srcDirs += 'src/main/kotlin' }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds true
+        htmlReport true
+        htmlOutput file("build/reports/lint-report.html")
+    }
+    testOptions {
+        animationsDisabled true
+        unitTests.all {
+            testLogging {
+                events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+            }
+        }
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+        }
+    }
+
+
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0-alpha3'
-    implementation 'com.android.support:design:28.0.0-alpha3'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation Deps.kotlinLibrary
+    implementation Deps.appCompat
+    implementation Deps.supportDesign
+    implementation Deps.constraintLayout
+    testImplementation Deps.junit
+    androidTestImplementation Deps.runner
+    androidTestImplementation Deps.espresso
+}
+
+dependencyUpdates {
+    checkForGradleUpdate = true
+    resolutionStrategy {
+        componentSelection { rules ->
+            rules.all { ComponentSelection selection ->
+                boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm'].any { qualifier ->
+                    selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+                }
+                if (rejected) {
+                    selection.reject('Release candidate')
+                }
+            }
+        }
+    }
 }

@@ -1,8 +1,7 @@
 package com.levimoreira.cinemabuff
 
+import junit.framework.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -18,10 +17,5 @@ class ExampleUnitTest {
     @Test
     fun addition2_isCorrect() {
         assertEquals(4, 1 + 3)
-    }
-
-    @Test
-    fun addition3_isCorrect() {
-        assertEquals(4, 3 + 1)
     }
 }
