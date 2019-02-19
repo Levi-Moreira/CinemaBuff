@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: "kotlin-kapt"
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -23,9 +25,35 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "androidx.core:core:1.0.1"
-    implementation "androidx.annotation:annotation:1.0.1"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Support Lib
+    implementation "androidx.core:core:${androidX}"
+    implementation "androidx.annotation:annotation:${androidX}"
+
+    // Di
+    implementation "org.koin:koin-android:${koin}"
+
+    // Networking
+    implementation "com.squareup.retrofit2:retrofit:${retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofitGsonConverter}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofitRxJava2CallAdapter}"
+
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxjava:${rxJava2}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rxAndroid}"
+    implementation "com.google.code.gson:gson:${gson}"
+
+    // Room
+    implementation "androidx.room:room-runtime:${room}"
+    kapt "androidx.room:room-compiler:${room}"
+    implementation "androidx.room:room-rxjava2:${room}"
+    implementation "androidx.room:room-coroutines:${room}"
+
+    //LifeCycle
+    implementation "androidx.lifecycle:lifecycle-extensions:${lifecycle}"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:${lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:${lifecycle}"
+
 }
 repositories {
     mavenCentral()
