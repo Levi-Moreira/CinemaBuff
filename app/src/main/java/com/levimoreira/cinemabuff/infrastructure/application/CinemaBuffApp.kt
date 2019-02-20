@@ -1,7 +1,7 @@
-package com.levimoreira.cinemabuff.application
+package com.levimoreira.cinemabuff.infrastructure.application
 
 import android.app.Application
-import com.levimoreira.cinemabuff.api.networkModule
+import com.levimoreira.cinemabuff.infrastructure.api.networkModule
 import org.koin.android.ext.android.startKoin
 
 class CinemaBuffApp : Application() {

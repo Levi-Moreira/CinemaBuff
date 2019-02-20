@@ -1,7 +1,8 @@
-package com.levimoreira.cinemabuff
+package com.levimoreira.cinemabuff.movie
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.levimoreira.cinemabuff.R
 
 class MainActivity : AppCompatActivity() {
 

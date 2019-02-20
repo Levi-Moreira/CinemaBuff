@@ -1,6 +1,6 @@
-package com.levimoreira.cinemabuff.api
+package com.levimoreira.cinemabuff.infrastructure.api
 
-import com.levimoreira.cinemabuff.data.retrofit.TopMovieListResponse
+import com.levimoreira.cinemabuff.infrastructure.data.retrofit.TopMovieListResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

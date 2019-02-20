@@ -1,9 +1,9 @@
-package com.levimoreira.cinemabuff.database
+package com.levimoreira.cinemabuff.infrastructure.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.levimoreira.cinemabuff.BuildConfig
-import com.levimoreira.cinemabuff.data.models.Movie
+import com.levimoreira.cinemabuff.infrastructure.data.models.Movie
 
 @Database(
     entities = [

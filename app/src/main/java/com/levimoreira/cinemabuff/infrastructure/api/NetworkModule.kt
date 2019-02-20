@@ -1,4 +1,4 @@
-package com.levimoreira.cinemabuff.api
+package com.levimoreira.cinemabuff.infrastructure.api
 
 import com.levimoreira.cinemabuff.BuildConfig
 import okhttp3.OkHttpClient

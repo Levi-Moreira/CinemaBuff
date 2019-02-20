@@ -1,7 +1,7 @@
-package com.levimoreira.cinemabuff.data.retrofit
+package com.levimoreira.cinemabuff.infrastructure.data.retrofit
 
 import com.google.gson.annotations.SerializedName
-import com.levimoreira.cinemabuff.data.models.Movie
+import com.levimoreira.cinemabuff.infrastructure.data.models.Movie
 
 class TopMovieListResponse(
     val page: Int,

@@ -1,9 +1,9 @@
-package com.levimoreira.cinemabuff.data.models
+package com.levimoreira.cinemabuff.infrastructure.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import com.levimoreira.cinemabuff.data.models.Movie.Companion.TABLE_NAME
+import com.levimoreira.cinemabuff.infrastructure.data.models.Movie.Companion.TABLE_NAME
 
 @Entity(tableName = TABLE_NAME)
 data class Movie(

@@ -36,8 +36,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Support Lib
-    implementation "androidx.core:core:${androidX}"
-    implementation "androidx.annotation:annotation:${androidX}"
+    implementation "androidx.core:core:${androidXCore}"
+    implementation "androidx.annotation:annotation:${androidXAnnotation}"
+    implementation "androidx.appcompat:appcompat:${androidXAppCompat}"
 
     // Di
     implementation "org.koin:koin-android:${koin}"
