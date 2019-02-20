@@ -22,6 +22,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField 'String', "TMDB_API_KEY", buildProperties.secrets['apiKey'].string
         buildConfigField 'String', "SERVER_BASE_URL", buildProperties.secrets['prodServer'].string
+        buildConfigField 'int', "DATABASE_VERSION", '1'
     }
     buildTypes {
         release {

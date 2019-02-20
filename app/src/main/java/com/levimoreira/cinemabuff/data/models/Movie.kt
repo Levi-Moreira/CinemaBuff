@@ -1,8 +1,14 @@
 package com.levimoreira.cinemabuff.data.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import com.levimoreira.cinemabuff.data.models.Movie.Companion.TABLE_NAME
 
+@Entity(tableName = TABLE_NAME)
 data class Movie(
+
+    @PrimaryKey
     val id: Long,
     val video: Boolean,
     val popularity: Int,
@@ -12,4 +18,8 @@ data class Movie(
     @SerializedName("vote_count") val voteCount: Int,
     @SerializedName("vote_average") val voteAvg: Float,
     @SerializedName("release_date") val releaseDate: String
-)
+) {
+    companion object {
+        const val TABLE_NAME = "movie"
+    }
+}
