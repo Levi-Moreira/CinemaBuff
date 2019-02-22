@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.CinemaBuff" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">#ffffff</item>
+        <item name="colorPrimaryDark">#e0e0e0</item>
+        <item name="colorAccent">#607d8b</item>
+    </style>
+</resources>
