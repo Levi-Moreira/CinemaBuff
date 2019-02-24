@@ -16,9 +16,9 @@ val networkModule = module {
 }
 
 fun provideDefaultOkhttpClient(): OkHttpClient {
-    val client = OkHttpClient()
-    client.interceptors().add(ApiKeyInterceptor())
-    return client
+    return OkHttpClient.Builder()
+        .addInterceptor(ApiKeyInterceptor())
+        .build()
 }
 
 fun provideRetrofit(client: OkHttpClient): Retrofit {

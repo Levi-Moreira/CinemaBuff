@@ -7,5 +7,5 @@ class TopMovieListResponse(
     val page: Int,
     @SerializedName("total_results") val totalResults: Int,
     @SerializedName("total_pages") val totalPages: Int,
-    val result: List<Movie>
+    val results: List<Movie>
 )

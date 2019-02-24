@@ -12,7 +12,7 @@ data class Movie(
     @PrimaryKey
     val id: Long,
     val video: Boolean,
-    val popularity: Int,
+    val popularity: Float,
     val overview: String,
     val title: String,
     @SerializedName("poster_path") val posterPath: String,
@@ -21,7 +21,7 @@ data class Movie(
     @SerializedName("release_date") val releaseDate: String
 ) {
 
-    fun getCompletePosterPath() = BuildConfig.SERVER_BASE_URL + posterPath
+    fun getCompletePosterPath() = BuildConfig.IMAGES_SERVER_BASE_URL + posterPath
 
     companion object {
         const val TABLE_NAME = "movie"

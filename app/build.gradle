@@ -22,6 +22,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField 'String', "TMDB_API_KEY", buildProperties.secrets['apiKey'].string
         buildConfigField 'String', "SERVER_BASE_URL", buildProperties.secrets['prodServer'].string
+        buildConfigField 'String', "IMAGES_SERVER_BASE_URL", buildProperties.secrets['prodServerImages'].string
         buildConfigField 'int', "DATABASE_VERSION", '1'
     }
     buildTypes {
@@ -42,6 +43,7 @@ dependencies {
 
     // Di
     implementation "org.koin:koin-android:${koin}"
+    implementation "org.koin:koin-android-viewmodel:${koin}"
 
     // Networking
     implementation "com.squareup.retrofit2:retrofit:${retrofit}"
@@ -69,6 +71,8 @@ dependencies {
     implementation "androidx.paging:paging-rxjava2:${paging}"
     implementation "androidx.constraintlayout:constraintlayout:${constraintLayout}"
     implementation "com.google.android.material:material:${materialDesign}"
+
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     implementation "com.github.bumptech.glide:glide:${glide}"
     kapt "com.github.bumptech.glide:compiler:${glide}"

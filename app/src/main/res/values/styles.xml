@@ -5,4 +5,14 @@
         <item name="colorPrimaryDark">#e0e0e0</item>
         <item name="colorAccent">#607d8b</item>
     </style>
+
+    <style name="Movie.Title" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/palanquin_semibold</item>
+    </style>
+
+    <style name="Movie.Overview" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/palanquin</item>
+    </style>
 </resources>

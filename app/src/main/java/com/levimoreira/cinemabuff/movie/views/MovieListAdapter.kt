@@ -1,4 +1,4 @@
-package com.levimoreira.cinemabuff.movie
+package com.levimoreira.cinemabuff.movie.views
 
 import android.view.View
 import android.view.ViewGroup
@@ -7,11 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.levimoreira.cinemabuff.R
 import com.levimoreira.cinemabuff.infrastructure.data.models.Movie
+import com.levimoreira.cinemabuff.movie.data.MovieDiffUtil
 import com.levimoreira.cinemabuff.utils.inflate
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
 class MovieListAdapter :
-    PagedListAdapter<Movie, MovieListAdapter.MovieViewHolder>(MovieDiffUtil()) {
+    PagedListAdapter<Movie, MovieListAdapter.MovieViewHolder>(
+        MovieDiffUtil()
+    ) {
 
     lateinit var onMovieClickListener: (Movie) -> Unit
 
