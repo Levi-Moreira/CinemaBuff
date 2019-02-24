@@ -24,13 +24,42 @@ android {
         buildConfigField 'String', "SERVER_BASE_URL", buildProperties.secrets['prodServer'].string
         buildConfigField 'String', "IMAGES_SERVER_BASE_URL", buildProperties.secrets['prodServerImages'].string
         buildConfigField 'int', "DATABASE_VERSION", '1'
+
     }
     buildTypes {
+        debug {
+            debuggable true
+            testCoverageEnabled true
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets { main.java.srcDirs += 'src/main/kotlin' }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds true
+        htmlReport true
+        htmlOutput file("build/reports/lint-report.html")
+    }
+    testOptions {
+        animationsDisabled true
+        unitTests.all {
+            testLogging {
+                events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+            }
+        }
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+        }
+    }
+
+
 }
 
 dependencies {
@@ -80,4 +109,6 @@ dependencies {
 }
 repositories {
     mavenCentral()
+
 }
+
