@@ -49,6 +49,9 @@ captures/
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
 
+/secrets.properties
+
+
 # Google Services (e.g. APIs or Firebase)
 google-services.json
 
@@ -63,3 +66,4 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+

@@ -1,11 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="Theme.CinemaBuff" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">#ffffff</item>
+        <item name="colorPrimaryDark">#e0e0e0</item>
+        <item name="colorAccent">#607d8b</item>
     </style>
 
+    <style name="Movie.Title" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/palanquin_semibold</item>
+    </style>
+
+    <style name="Movie.Overview" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/palanquin</item>
+    </style>
 </resources>
