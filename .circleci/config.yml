@@ -11,8 +11,11 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
-         name: Chmod permissions
-         command: sudo chmod +x ./gradlew
+          name: Chmod permissions
+          command: sudo chmod +x ./gradlew
+      - run:
+          name: Decode secrets
+          command: echo $SECRET_PROPERTIES | base64 --decode --ignore-garbage > secrets.properties
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
