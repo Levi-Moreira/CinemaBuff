@@ -1,7 +1,8 @@
 package com.levimoreira.cinemabuff.movie.data
 
 import androidx.recyclerview.widget.DiffUtil
-import com.levimoreira.cinemabuff.infrastructure.data.models.Movie
+import com.cinemabuff.data.entities.Movie
+
 
 class MovieDiffUtil : DiffUtil.ItemCallback<Movie>() {
     override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean = oldItem.id == newItem.id

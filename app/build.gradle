@@ -20,11 +20,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField 'String', "TMDB_API_KEY", buildProperties.secrets['apiKey'].string
-        buildConfigField 'String', "SERVER_BASE_URL", buildProperties.secrets['prodServer'].string
-        buildConfigField 'String', "IMAGES_SERVER_BASE_URL", buildProperties.secrets['prodServerImages'].string
-        buildConfigField 'int', "DATABASE_VERSION", '1'
-
     }
     buildTypes {
         debug {
@@ -74,21 +69,14 @@ dependencies {
     implementation "org.koin:koin-android:${koin}"
     implementation "org.koin:koin-android-viewmodel:${koin}"
 
-    // Networking
-    implementation "com.squareup.retrofit2:retrofit:${retrofit}"
-    implementation "com.squareup.retrofit2:converter-gson:${retrofitGsonConverter}"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofitRxJava2CallAdapter}"
+
 
     // RxJava
     implementation "io.reactivex.rxjava2:rxjava:${rxJava2}"
     implementation "io.reactivex.rxjava2:rxandroid:${rxAndroid}"
-    implementation "com.google.code.gson:gson:${gson}"
 
-    // Room
-    implementation "androidx.room:room-runtime:${room}"
-    kapt "androidx.room:room-compiler:${room}"
-    implementation "androidx.room:room-rxjava2:${room}"
-    implementation "androidx.room:room-coroutines:${room}"
+
+
 
     // LifeCycle
     implementation "androidx.lifecycle:lifecycle-extensions:${lifecycle}"
@@ -105,6 +93,7 @@ dependencies {
 
     implementation "com.github.bumptech.glide:glide:${glide}"
     kapt "com.github.bumptech.glide:compiler:${glide}"
+    implementation project(path: ':data')
 
 }
 repositories {

@@ -1,6 +1,6 @@
-package com.levimoreira.cinemabuff.infrastructure.api
+package com.cinemabuff.data.network
 
-import com.levimoreira.cinemabuff.BuildConfig
+import com.cinemabuff.data.BuildConfig
 import okhttp3.OkHttpClient
 import org.koin.dsl.module.module
 import retrofit2.Retrofit
@@ -17,17 +17,17 @@ val networkModule = module {
 
 fun provideDefaultOkhttpClient(): OkHttpClient {
     return OkHttpClient.Builder()
-        .addInterceptor(ApiKeyInterceptor())
-        .build()
+            .addInterceptor(ApiKeyInterceptor())
+            .build()
 }
 
 fun provideRetrofit(client: OkHttpClient): Retrofit {
     return Retrofit.Builder()
-        .baseUrl(BuildConfig.SERVER_BASE_URL)
-        .client(client)
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .build()
+            .baseUrl(BuildConfig.SERVER_BASE_URL)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
 }
 
 fun provideTmdbService(retrofit: Retrofit): TmdbApi = retrofit.create(TmdbApi::class.java)

@@ -1,4 +1,4 @@
-package com.levimoreira.cinemabuff.infrastructure.database
+package com.cinemabuff.data.database
 
 import androidx.room.Delete
 import androidx.room.Insert

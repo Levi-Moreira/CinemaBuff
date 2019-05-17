@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "kotlin-kapt"
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', "TMDB_API_KEY", buildProperties.secrets['apiKey'].string
+        buildConfigField 'String', "SERVER_BASE_URL", buildProperties.secrets['prodServer'].string
+        buildConfigField 'String', "IMAGES_SERVER_BASE_URL", buildProperties.secrets['prodServerImages'].string
+        buildConfigField 'int', "DATABASE_VERSION", '1'
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.core:core-ktx:1.0.2'
+
+    // Room
+    implementation deps.room.runtime
+    kapt deps.room.compiler
+    implementation deps.room.rxjava2
+    implementation deps.room.coroutines
+
+    // Networking
+    implementation deps.retrofit.core
+    implementation deps.retrofit.gsonconverter
+    implementation deps.retrofit.rxjava2adapter
+    implementation deps.gson
+
+    // Koin
+    implementation deps.koin.core
+    implementation deps.koin.viewmodel
+}

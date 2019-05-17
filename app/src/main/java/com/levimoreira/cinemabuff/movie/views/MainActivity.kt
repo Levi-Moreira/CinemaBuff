@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.levimoreira.cinemabuff.R
-import com.levimoreira.cinemabuff.infrastructure.data.NetworkState
-import com.levimoreira.cinemabuff.infrastructure.data.models.Movie
+import com.cinemabuff.data.network.NetworkState
+import com.cinemabuff.data.entities.Movie
 import com.levimoreira.cinemabuff.movie.viewmodels.MovieViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         movieViewModel.movieDataSource.loadState.observe(this, Observer {
             swipeRefreshLayout.isRefreshing =
-                it == NetworkState.LOADING
+                it == com.cinemabuff.data.network.NetworkState.LOADING
         })
 
         movieViewModel.getMovies().observe(this, Observer {
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun onMovieClick(movie: Movie) {
+    private fun onMovieClick(movie: com.cinemabuff.data.entities.Movie) {
         Toast.makeText(this, movie.title, Toast.LENGTH_SHORT).show()
     }
 }

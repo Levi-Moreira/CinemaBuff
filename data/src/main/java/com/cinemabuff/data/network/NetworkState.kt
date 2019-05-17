@@ -1,7 +1,7 @@
-package com.levimoreira.cinemabuff.infrastructure.data
+package com.cinemabuff.data.network
 
 data class NetworkState private constructor(val status: Status,
-    val msg: String? = null) {
+                                            val msg: String? = null) {
 
     companion object {
         val LOADED = NetworkState(Status.SUCCESS)

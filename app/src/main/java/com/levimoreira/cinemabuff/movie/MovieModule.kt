@@ -1,6 +1,6 @@
 package com.levimoreira.cinemabuff.movie
 
-import com.levimoreira.cinemabuff.infrastructure.api.TmdbApi
+import com.cinemabuff.data.network.TmdbApi
 import com.levimoreira.cinemabuff.movie.data.MovieDataSourceFactory
 import com.levimoreira.cinemabuff.movie.data.MovieRepository
 import com.levimoreira.cinemabuff.movie.data.MovieRepositoryImpl
@@ -15,10 +15,10 @@ val movieModule = module {
 }
 
 fun provideMovieRepository(tmdbApi: TmdbApi) =
-    MovieRepositoryImpl(tmdbApi)
+        MovieRepositoryImpl(tmdbApi)
 
 fun provideMovieDataSourceFactory(repository: MovieRepository) =
-    MovieDataSourceFactory(repository)
+        MovieDataSourceFactory(repository)
 
 fun provideMovieViewModel(dataSourceFactory: MovieDataSourceFactory) =
-    MovieViewModel(dataSourceFactory)
+        MovieViewModel(dataSourceFactory)
