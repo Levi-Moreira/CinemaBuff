@@ -5,9 +5,8 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.cinemabuff.data.entities.Movie
+import com.levimoreira.cinemabuff.domain.entities.Movie
 import com.levimoreira.cinemabuff.R
-import com.levimoreira.cinemabuff.movie.data.MovieDiffUtil
 import com.levimoreira.cinemabuff.utils.inflate
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
@@ -32,7 +31,7 @@ class MovieListAdapter :
                 item: Movie,
                 onMovieClickListener: (Movie) -> Unit
         ) = with(itemView) {
-            Glide.with(itemView).load(item.getCompletePosterPath()).into(moviePoster)
+            Glide.with(itemView).load(item.posterPath).into(moviePoster)
             movieTitle.text = item.title
             movieDescription.text = item.overview
             itemView.setOnClickListener {

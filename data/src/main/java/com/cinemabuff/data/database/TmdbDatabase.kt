@@ -3,11 +3,11 @@ package com.cinemabuff.data.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.cinemabuff.data.BuildConfig
-import com.cinemabuff.data.entities.Movie
+import com.cinemabuff.data.models.MovieModel
 
 @Database(
         entities = [
-            Movie::class],
+            MovieModel::class],
         version = BuildConfig.DATABASE_VERSION
 )
 abstract class TmdbDatabase : RoomDatabase() {

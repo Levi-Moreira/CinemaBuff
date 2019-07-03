@@ -5,6 +5,11 @@ apply plugin: "kotlin-kapt"
 android {
     compileSdkVersion 28
 
+    buildProperties {
+        secrets {
+            using project.file('../secrets.properties')
+        }
+    }
 
     defaultConfig {
         minSdkVersion 21
@@ -50,4 +55,16 @@ dependencies {
     // Koin
     implementation deps.koin.core
     implementation deps.koin.viewmodel
+
+    implementation "androidx.paging:paging-runtime:${paging}"
+    implementation "androidx.paging:paging-rxjava2:${paging}"
+
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxjava:${rxJava2}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rxAndroid}"
+
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    implementation 'javax.inject:javax.inject:1@jar'
+    implementation project(path: ':domain')
 }

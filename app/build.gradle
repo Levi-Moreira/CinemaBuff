@@ -93,6 +93,8 @@ dependencies {
 
     implementation "com.github.bumptech.glide:glide:${glide}"
     kapt "com.github.bumptech.glide:compiler:${glide}"
+    implementation 'javax.inject:javax.inject:1@jar'
+    implementation project(path: ':domain')
     implementation project(path: ':data')
 
 }
