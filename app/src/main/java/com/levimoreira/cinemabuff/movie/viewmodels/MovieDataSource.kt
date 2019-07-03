@@ -1,28 +1,30 @@
-package com.levimoreira.cinemabuff.movie.data
+package com.levimoreira.cinemabuff.movie.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.cinemabuff.data.network.NetworkState
+import com.levimoreira.cinemabuff.domain.entities.Movie
+import com.levimoreira.cinemabuff.domain.entities.NetworkState
+import com.levimoreira.cinemabuff.domain.movie.MovieRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class MovieDataSource(private val repository: MovieRepository) : PageKeyedDataSource<Int, com.cinemabuff.data.entities.Movie>() {
+class MovieDataSource(private val repository: MovieRepository) : PageKeyedDataSource<Int, Movie>() {
 
     private val disposableBag = CompositeDisposable()
     var loadState: MutableLiveData<NetworkState> = MutableLiveData()
 
     override fun loadInitial(
             params: LoadInitialParams<Int>,
-            callback: LoadInitialCallback<Int, com.cinemabuff.data.entities.Movie>
+            callback: LoadInitialCallback<Int, Movie>
     ) {
         loadState.postValue(NetworkState.LOADING)
         val disposable = repository.getMovies(page = 1)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    callback.onResult(it.results, null, 2)
+                    callback.onResult(it, null, 2)
                     loadState.postValue(NetworkState.LOADED)
                 }, {
                     Timber.e(it)
@@ -32,13 +34,13 @@ class MovieDataSource(private val repository: MovieRepository) : PageKeyedDataSo
         disposableBag.add(disposable)
     }
 
-    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, com.cinemabuff.data.entities.Movie>) {
+    override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
         loadState.postValue(NetworkState.LOADING)
         val disposable = repository.getMovies(page = params.key)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    callback.onResult(it.results, params.key + 1)
+                    callback.onResult(it, params.key + 1)
                     loadState.postValue(NetworkState.LOADED)
                 }, {
                     Timber.e(it)
@@ -47,7 +49,7 @@ class MovieDataSource(private val repository: MovieRepository) : PageKeyedDataSo
         disposableBag.add(disposable)
     }
 
-    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, com.cinemabuff.data.entities.Movie>) {
+    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
         loadState.postValue(NetworkState.LOADED)
     }
 

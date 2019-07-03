@@ -1,7 +1,8 @@
-package com.levimoreira.cinemabuff.movie.data
+package com.levimoreira.cinemabuff.movie.viewmodels
 
 import androidx.paging.DataSource
-import com.cinemabuff.data.entities.Movie
+import com.levimoreira.cinemabuff.domain.entities.Movie
+import com.levimoreira.cinemabuff.domain.movie.MovieRepository
 
 class MovieDataSourceFactory(private val movieRepository: MovieRepository) :
         DataSource.Factory<Int, Movie>() {

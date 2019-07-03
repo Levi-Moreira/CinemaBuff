@@ -4,15 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.cinemabuff.data.entities.Movie
-import com.cinemabuff.data.network.TmdbApi.Companion.TMDB_PAGE_SIZE
-import com.levimoreira.cinemabuff.movie.data.MovieDataSource
-import com.levimoreira.cinemabuff.movie.data.MovieDataSourceFactory
+import com.levimoreira.cinemabuff.domain.entities.Movie
 
 class MovieViewModel(dataSourceFactory: MovieDataSourceFactory) : ViewModel() {
 
     private val config = PagedList.Config.Builder()
-            .setPageSize(TMDB_PAGE_SIZE)
+            .setPageSize(20)
             .build()
 
     val movieDataSource: MovieDataSource = dataSourceFactory.create() as MovieDataSource

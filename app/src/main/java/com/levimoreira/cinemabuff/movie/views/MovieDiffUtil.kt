@@ -1,7 +1,7 @@
-package com.levimoreira.cinemabuff.movie.data
+package com.levimoreira.cinemabuff.movie.views
 
 import androidx.recyclerview.widget.DiffUtil
-import com.cinemabuff.data.entities.Movie
+import com.levimoreira.cinemabuff.domain.entities.Movie
 
 
 class MovieDiffUtil : DiffUtil.ItemCallback<Movie>() {

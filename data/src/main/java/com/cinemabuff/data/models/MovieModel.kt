@@ -1,13 +1,14 @@
-package com.cinemabuff.data.entities
+package com.cinemabuff.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.cinemabuff.data.BuildConfig
-import com.cinemabuff.data.entities.Movie.Companion.TABLE_NAME
+import com.cinemabuff.data.models.MovieModel.Companion.TABLE_NAME
 import com.google.gson.annotations.SerializedName
+import com.levimoreira.cinemabuff.domain.entities.Movie
 
 @Entity(tableName = TABLE_NAME)
-data class Movie(
+data class MovieModel(
 
         @PrimaryKey
         val id: Long,
@@ -21,9 +22,26 @@ data class Movie(
         @SerializedName("release_date") val releaseDate: String
 ) {
 
+
+    fun toDomain(): Movie {
+        return Movie(
+                id,
+                video,
+                popularity,
+                overview,
+                title,
+                getCompletePosterPath(),
+                voteCount,
+                voteAvg,
+                releaseDate
+        )
+    }
+
     fun getCompletePosterPath() = BuildConfig.IMAGES_SERVER_BASE_URL + posterPath
 
     companion object {
         const val TABLE_NAME = "movie"
+
+
     }
 }
