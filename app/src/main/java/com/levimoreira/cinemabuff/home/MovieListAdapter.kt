@@ -1,4 +1,4 @@
-package com.levimoreira.cinemabuff.movie.views
+package com.levimoreira.cinemabuff.home
 
 import android.view.View
 import android.view.ViewGroup

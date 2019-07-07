@@ -1,4 +1,4 @@
-package com.levimoreira.cinemabuff.movie.views
+package com.levimoreira.cinemabuff.home
 
 import androidx.recyclerview.widget.DiffUtil
 import com.levimoreira.cinemabuff.domain.entities.Movie
