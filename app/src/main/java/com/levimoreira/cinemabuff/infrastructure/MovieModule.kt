@@ -1,8 +1,8 @@
-package com.levimoreira.cinemabuff.movie
+package com.levimoreira.cinemabuff.infrastructure
 
 import com.levimoreira.cinemabuff.domain.movie.MovieRepository
-import com.levimoreira.cinemabuff.movie.viewmodels.MovieDataSourceFactory
-import com.levimoreira.cinemabuff.movie.viewmodels.MovieViewModel
+import com.levimoreira.cinemabuff.home.MovieDataSourceFactory
+import com.levimoreira.cinemabuff.home.MovieViewModel
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 

@@ -1,4 +1,4 @@
-package com.levimoreira.cinemabuff.movie.viewmodels
+package com.levimoreira.cinemabuff.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
