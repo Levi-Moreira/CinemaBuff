@@ -16,6 +16,13 @@ jobs:
       - run:
           name: Decode secrets
           command: echo $SECRET_PROPERTIES | base64 --decode --ignore-garbage > secrets.properties
+
+      - run:
+          name: Decode Debug Google Services Json
+          command: echo $SERVICES_JSON_DEBUG | base64 --decode --ignore-garbage > app/src/debug/google-services.json
+      - run:
+          name: Decode Prod Google Services Json
+          command: echo $SERVICES_JSON_PROD | base64 --decode --ignore-garbage > app/src/release/google-services.json
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
