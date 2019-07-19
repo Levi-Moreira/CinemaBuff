@@ -35,10 +35,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation deps.android.appcompat
 
     // Room
     implementation deps.room.runtime
@@ -49,22 +46,13 @@ dependencies {
     // Networking
     implementation deps.retrofit.core
     implementation deps.retrofit.gsonconverter
-    implementation deps.retrofit.rxjava2adapter
     implementation deps.gson
 
     // Koin
     implementation deps.koin.core
     implementation deps.koin.viewmodel
 
-    implementation "androidx.paging:paging-runtime:${paging}"
-    implementation "androidx.paging:paging-rxjava2:${paging}"
-
-    // RxJava
-    implementation "io.reactivex.rxjava2:rxjava:${rxJava2}"
-    implementation "io.reactivex.rxjava2:rxandroid:${rxAndroid}"
-
-    implementation 'com.jakewharton.timber:timber:4.7.1'
-
-    implementation 'javax.inject:javax.inject:1@jar'
+    implementation deps.timber
+    implementation deps.inject
     implementation project(path: ':domain')
 }
