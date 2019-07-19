@@ -49,21 +49,18 @@ dependencies {
     // Networking
     implementation deps.retrofit.core
     implementation deps.retrofit.gsonconverter
-    implementation deps.retrofit.rxjava2adapter
     implementation deps.gson
 
     // Koin
     implementation deps.koin.core
     implementation deps.koin.viewmodel
 
-    implementation "androidx.paging:paging-runtime:${paging}"
-    implementation "androidx.paging:paging-rxjava2:${paging}"
 
     // RxJava
     implementation "io.reactivex.rxjava2:rxjava:${rxJava2}"
     implementation "io.reactivex.rxjava2:rxandroid:${rxAndroid}"
 
-    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation deps.timber
 
     implementation 'javax.inject:javax.inject:1@jar'
     implementation project(path: ':domain')
