@@ -25,6 +25,7 @@ android {
         debug {
             debuggable true
             testCoverageEnabled true
+            applicationIdSuffix '.dev'
         }
 
         release {
@@ -94,6 +95,9 @@ dependencies {
     implementation deps.coroutines.core
     implementation deps.coroutines.android
 
+    // Firebase
+    implementation deps.firebase.core
+
     implementation project(path: ':domain')
     implementation project(path: ':data')
 
@@ -101,3 +105,5 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+apply plugin: 'com.google.gms.google-services'
