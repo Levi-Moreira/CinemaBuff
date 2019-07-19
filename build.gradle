@@ -9,13 +9,15 @@ buildscript {
             retrofit: '2.6.0',
             gson    : '2.8.5',
             koin    : '1.0.2',
-            timber  : '4.7.1'
+            timber  : '4.7.1',
+            android : '1.0.2'
     ]
 
     ext.deps = [
 
-            support : [
-
+            android : [
+                    'appcompat': "androidx.appcompat:appcompat:${versions.android}",
+                    'ktx'      : "androidx.core:core-ktx:${versions.android}"
             ],
             room    : [
                     'runtime'   : "androidx.room:room-runtime:${versions.room}",
@@ -32,7 +34,8 @@ buildscript {
                     'core'     : "org.koin:koin-android:${versions.koin}",
                     'viewmodel': "org.koin:koin-android-viewmodel:${versions.koin}"
             ],
-            timber  : "com.jakewharton.timber:timber:${versions.timber}"
+            timber  : "com.jakewharton.timber:timber:${versions.timber}",
+            inject  : "javax.inject:javax.inject:1@jar"
     ]
 
 
