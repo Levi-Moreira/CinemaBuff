@@ -45,8 +45,6 @@ class HomeFragment : Fragment() {
                     LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         }
 
-        movieList.addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
-
         moviesAdapter.onMovieClickListener = ::onMovieClick
 
         movieViewModel.movieDataSource.loadState.observe(this, Observer {

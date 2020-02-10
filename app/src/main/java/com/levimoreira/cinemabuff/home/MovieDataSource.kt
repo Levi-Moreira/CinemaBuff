@@ -52,6 +52,7 @@ class MovieDataSource(
         loadState.postValue(NetworkState.LOADED)
     }
 
+    @ExperimentalCoroutinesApi
     override fun invalidate() {
         super.invalidate()
         scope.cancel()
