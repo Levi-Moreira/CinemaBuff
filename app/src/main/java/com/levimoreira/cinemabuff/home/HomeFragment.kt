@@ -7,30 +7,30 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.levimoreira.cinemabuff.R
 import com.levimoreira.cinemabuff.domain.entities.Movie
 import com.levimoreira.cinemabuff.domain.entities.NetworkState
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.viewmodel.ext.android.viewModel
 
+@ExperimentalCoroutinesApi
 class HomeFragment : Fragment() {
 
-    val movieViewModel: MovieViewModel by viewModel()
+    private val movieViewModel: MovieViewModel by viewModel()
 
     lateinit var moviesAdapter: MovieListAdapter
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
 
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,14 +42,14 @@ class HomeFragment : Fragment() {
         movieList.apply {
             adapter = moviesAdapter
             layoutManager =
-                    LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+                LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         }
 
         moviesAdapter.onMovieClickListener = ::onMovieClick
 
         movieViewModel.movieDataSource.loadState.observe(this, Observer {
             swipeRefreshLayout.isRefreshing =
-                    it == NetworkState.LOADING
+                it == NetworkState.LOADING
         })
 
         movieViewModel.getMovies().observe(this, Observer {

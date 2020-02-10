@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.levimoreira.cinemabuff.domain.entities.Movie
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class MovieViewModel(dataSourceFactory: MovieDataSourceFactory) : ViewModel() {
 
@@ -22,6 +23,7 @@ class MovieViewModel(dataSourceFactory: MovieDataSourceFactory) : ViewModel() {
         return pagedList
     }
 
+    @ExperimentalCoroutinesApi
     fun invalidateDataSource() {
         movieDataSource.invalidate()
     }
