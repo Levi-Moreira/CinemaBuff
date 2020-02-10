@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    android:layout_height="wrap_content">
+    app:cardCornerRadius="8dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,23 +15,22 @@
 
         <ImageView
             android:id="@+id/moviePoster"
-            android:layout_width="140dp"
-            android:layout_height="200dp"
-            android:background="#888"
+            android:layout_width="@dimen/movie_poster_width"
+            android:layout_height="@dimen/movie_poster_height"
+            android:contentDescription="@string/movie_poster_description_text"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="TODO" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/movieTitle"
             style="@style/Movie.Title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="@dimen/standard_title_text_margin_size"
+            android:layout_marginTop="@dimen/standard_title_text_margin_size"
+            android:layout_marginEnd="@dimen/standard_title_text_margin_size"
             android:ellipsize="end"
             android:maxLines="2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -46,10 +45,7 @@
             style="@style/Movie.Overview"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_margin="@dimen/standard_description_text_margin_size"
             android:ellipsize="end"
             android:maxLines="6"
             app:layout_constraintBottom_toBottomOf="@+id/moviePoster"
