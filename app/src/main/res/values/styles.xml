@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.CinemaBuff" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.CinemaBuff" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#d50000</item>
         <item name="colorPrimaryDark">#9b0000</item>
         <item name="colorAccent">#262626</item>
     </style>
 
     <style name="Movie.Title" parent="TextAppearance.AppCompat">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/palanquin_semibold</item>
     </style>
 
     <style name="Movie.Overview" parent="TextAppearance.AppCompat">
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">@font/palanquin</item>
     </style>
 </resources>
