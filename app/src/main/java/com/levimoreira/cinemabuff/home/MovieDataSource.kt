@@ -5,20 +5,25 @@ import androidx.paging.PageKeyedDataSource
 import com.levimoreira.cinemabuff.domain.entities.Movie
 import com.levimoreira.cinemabuff.domain.entities.NetworkState
 import com.levimoreira.cinemabuff.domain.movie.MovieRepository
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 
 class MovieDataSource(
-        private val repository: MovieRepository
+    private val repository: MovieRepository
 ) : PageKeyedDataSource<Int, Movie>() {
     var loadState: MutableLiveData<NetworkState> = MutableLiveData()
 
     private var scope = CoroutineScope(
-            Job() + Dispatchers.Default
+        Job() + Dispatchers.Default
     )
 
     override fun loadInitial(
-            params: LoadInitialParams<Int>,
-            callback: LoadInitialCallback<Int, Movie>
+        params: LoadInitialParams<Int>,
+        callback: LoadInitialCallback<Int, Movie>
     ) {
         loadState.postValue(NetworkState.LOADING)
 
@@ -52,6 +57,7 @@ class MovieDataSource(
         loadState.postValue(NetworkState.LOADED)
     }
 
+    @ExperimentalCoroutinesApi
     override fun invalidate() {
         super.invalidate()
         scope.cancel()

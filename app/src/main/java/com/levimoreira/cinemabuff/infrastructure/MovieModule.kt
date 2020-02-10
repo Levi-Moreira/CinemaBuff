@@ -7,7 +7,7 @@ import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
 val movieModule = module {
-    single<MovieDataSourceFactory> { provideMovieDataSourceFactory(get()) }
+    single { provideMovieDataSourceFactory(get()) }
     viewModel { provideMovieViewModel(get()) }
 }
 

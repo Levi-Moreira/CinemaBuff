@@ -3,6 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CinemaBuff.iml" filepath="$PROJECT_DIR$/CinemaBuff.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/CinemaBuff-app.iml" filepath="$PROJECT_DIR$/app/CinemaBuff-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/data/CinemaBuff-data.iml" filepath="$PROJECT_DIR$/data/CinemaBuff-data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/domain/CinemaBuff-domain.iml" filepath="$PROJECT_DIR$/domain/CinemaBuff-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Documents-CinemaBuff.iml" filepath="$PROJECT_DIR$/Documents-CinemaBuff.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/data/data.iml" filepath="$PROJECT_DIR$/data/data.iml" />
       <module fileurl="file://$PROJECT_DIR$/domain/domain.iml" filepath="$PROJECT_DIR$/domain/domain.iml" />

@@ -16,7 +16,7 @@ buildscript {
             material        : '1.0.0',
             constraintLayout: '1.1.3',
             kotlin          : '1.3.41',
-            gradlePlugin    : '3.5.0-rc01',
+            gradlePlugin    : '3.5.3',
             novodaProperties: '0.4.1',
             playServices    : '4.2.0',
             firebase        : [
