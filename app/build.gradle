@@ -29,7 +29,8 @@ android {
         }
 
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -71,6 +72,8 @@ dependencies {
     // LifeCycle
     implementation deps.lifecycle.extensions
     implementation deps.lifecycle.viewmodel
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt deps.lifecycle.compiler
 
     //Navigation
