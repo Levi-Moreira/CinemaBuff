@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.levimoreira.cinemabuff.DebugActivity
+import com.levimoreira.cinemabuff.debug.DebugActivity
 import com.levimoreira.cinemabuff.R
 
 class NavigationActivity : AppCompatActivity() {
