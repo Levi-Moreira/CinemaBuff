@@ -20,7 +20,10 @@ open class BaseRepository {
         return callData
     }
 
-    private suspend fun <T : Any> apiCall(call: suspend () -> T, errorMessage: String): NetworkResult<T> {
+    private suspend fun <T : Any> apiCall(
+        call: suspend () -> T,
+        errorMessage: String
+    ): NetworkResult<T> {
         return try {
             val response = call.invoke()
             NetworkResult.Success(response)
